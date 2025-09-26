@@ -1,0 +1,110 @@
+.lightred{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px auto;
+    opacity: 0.3;
+}
+.lightred.on{
+    opacity: 1;
+}
+.lightyellow{
+    background-color: yellow;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px auto;
+    opacity: 0.3;
+}
+.lightyellow.on{
+    opacity: 1;
+}
+.lightgreen{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px auto;
+    opacity: 0.3;
+}
+.lightgreen.on{
+    opacity: 1;
+}
+.titulo{
+    display: flex;
+}
+.semaforo{
+    
+    width: 320px;
+    height: 350px;
+    background-color: black;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px auto;
+}
+.light{
+    
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px auto;
+    opacity: 1;
+}
+.light.red{
+    background-color: red;
+}
+.light.red.on{
+    opacity:  1 ;
+}
+.light.yellow{
+    background-color: yellow;
+}
+.light.yellow.on{
+    opacity: 1;
+}
+.light.green{
+    background-color: green;
+}
+.light.green.on{
+    opacity: 1;
+}
+button{
+    width: 100px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: darkblue;
+}
+
+button:active{
+    background-color: navy;
+}
+button:focus{
+    outline: none;
+    box-shadow: 0 0 5px 2px lightblue;
+}
+button:disabled{
+    background-color: grey;
+    cursor: not-allowed;
+}
+button:disabled:hover{
+    background-color: grey;
+}
+button:disabled:active{
+    background-color: grey;
+}
+button:disabled:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+
+

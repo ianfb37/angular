@@ -1,0 +1,17 @@
+<body>
+<p>juego-topo works!</p>
+
+<div>
+    <div class="grid">
+  <div
+    *ngFor="let item of items; let i = index"
+    class="circle"
+    [class.active]="i === activeIndex"
+    (click)="onCircleClick(i)">
+    
+</div>
+</div>
+<h1>{{contador}}</h1>  
+
+</div>
+</body>
