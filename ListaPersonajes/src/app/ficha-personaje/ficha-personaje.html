@@ -1,0 +1,13 @@
+<div class="ficha" [ngStyle]="{'background-color': fondo}">
+  <img [src]="personaje.imagen" [alt]="personaje.nombre" class="ficha-img">
+  <div class="ficha-info">
+    <h3>{{ personaje.nombre }}</h3>
+    <p>Raza: {{ personaje.raza }}</p>
+    <p>
+      Poder:
+      <span class="estrella" *ngFor="let e of estrellas">★</span>
+      <span class="gris" *ngFor="let e of Array(5 - estrellas.length)">★</span>
+      <span class="poder-num">({{ personaje.poder }})</span>
+    </p>
+  </div>
+</div>

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-juego-topo',
-   imports: [CommonModule],
+   imports: [CommonModule, MatButtonModule],
   templateUrl: './juego-topo.html',
   styleUrl: './juego-topo.css'
 })
@@ -25,4 +26,5 @@ contador: number = 0;
       this.activeIndex = newIndex;
     }
   }
+  
 }

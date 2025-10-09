@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Introduccion": {
+    "ListaPersonajes": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,7 +25,6 @@
               }
             ],
             "styles": [
-              "src/custom-theme.scss",
               "src/styles.css"
             ]
           },
@@ -57,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Introduccion:build:production"
+              "buildTarget": "ListaPersonajes:build:production"
             },
             "development": {
-              "buildTarget": "Introduccion:build:development"
+              "buildTarget": "ListaPersonajes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,6 +90,6 @@
     }
   },
   "cli": {
-    "analytics": "495830cb-138b-43a1-ab63-9a8a2e72926a"
+    "analytics": "57716fb9-9d00-4e2f-be2a-264ac3d6461f"
   }
 }
