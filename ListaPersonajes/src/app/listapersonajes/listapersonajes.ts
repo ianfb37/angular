@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-listapersonajes',
-  imports: [],
-  templateUrl: './listapersonajes.html',
-  styleUrl: './listapersonajes.css'
-})
+import { CommonModule } from '@angular/common';
 
 export interface ficha {
   imagen: string;
@@ -13,6 +7,14 @@ export interface ficha {
   raza: string;
   poder: number;
 }
+@Component({
+  selector: 'app-listapersonajes',
+  imports: [],
+  templateUrl: './listapersonajes.html',
+  styleUrl: './listapersonajes.css'
+})
+
+
 
 export class listapersonajes {
   personajes: ficha[] = [

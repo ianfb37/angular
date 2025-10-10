@@ -1,12 +1,20 @@
 import { Component, Input } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { NgStyle } from '@angular/common';
 @Component({
+
   selector: 'app-ficha-personaje',
   templateUrl: './ficha-personaje.html',
   styleUrls: ['./ficha-personaje.css'],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule, NgStyle]
 })
+
 export class FichaPersonajeComponent {
+  get estrellasGrises(): any[] {
+    return Array(5 - this.estrellas.length);
+  }
+
   @Input() personaje!: {
     nombre: string;
     raza: string;
