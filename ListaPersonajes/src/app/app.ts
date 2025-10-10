@@ -1,15 +1,16 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { listapersonajes } from './listapersonajes/listapersonajes';
-import { FichaPersonajeComponent } from './ficha-personaje/ficha-personaje';
+import { ListapersonajesComponent } from './listapersonajes/listapersonajes';
+import { FichaPersonajeComponent } from "./ficha-personaje/ficha-personaje";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, listapersonajes, FichaPersonajeComponent],
+  standalone: true,
+  imports: [RouterOutlet, CommonModule, ListapersonajesComponent, FichaPersonajeComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'] // <-- aquí el cambio importante
+  styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('ListaPersonajes');
+export class AppComponent {
+  protected readonly title = signal('Lista de Personajes de Dragon Ball');
 }

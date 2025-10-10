@@ -1,0 +1,10 @@
+<!-- listapersonajes.html -->
+<div class="lista-container">
+  <h2>Personajes de Dragon Ball</h2>
+  <div class="fichas-grid">
+    <app-ficha-personaje 
+      *ngFor="let personaje of personajes" 
+      [personaje]="personaje"> 
+    </app-ficha-personaje>
+  </div>
+</div>
