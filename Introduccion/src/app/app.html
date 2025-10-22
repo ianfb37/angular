@@ -1,9 +1,6 @@
-
-    <h1>Menu</h1>
-    <toolbar>
-        
-    </toolbar>
-     
-    
-<router-outlet></router-outlet>
-    
+<!-- app.html -->
+<div [class.halloween-theme]="isHalloweenMode()">
+  <h1>Menu</h1>
+  <toolbar></toolbar>
+  <router-outlet></router-outlet>
+</div>

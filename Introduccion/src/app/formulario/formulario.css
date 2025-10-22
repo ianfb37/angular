@@ -1,0 +1,218 @@
+/* Estilos generales */
+
+.containermaster {
+     background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Courier New', monospace;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 100 100"><path fill="%23333" d="M50 0L100 50L50 100L0 50Z"/></svg>');
+    background-size: 20px 20px;
+    margin-top: 50px;
+   
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2d2d2d;
+    border: 2px solid #8b0000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+    position: relative;
+}
+
+.container::before {
+    content: "🎃";
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 2em;
+}
+
+h1 {
+    color: #ff6b00;
+    text-align: center;
+    text-shadow: 0 0 10px #ff4500;
+    border-bottom: 2px solid #8b0000;
+    padding-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffa500;
+    font-weight: bold;
+}
+
+.required {
+    color: #ff0000;
+}
+
+/* Campos de entrada */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #3a3a3a;
+    border: 2px solid #555;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ff6b00;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+/* Campos con error - Estilo sangriento */
+input.error, select.error, textarea.error {
+    border-color: #b30000 !important;
+    background-color: #3a1a1a !important;
+    box-shadow: 0 0 10px rgba(179, 0, 0, 0.7) !important;
+    animation: pulse-error 0.5s ease-in-out;
+}
+
+@keyframes pulse-error {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #ff4444;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+    padding: 5px 10px;
+    background-color: #3a1a1a;
+    border-left: 3px solid #b30000;
+    border-radius: 3px;
+}
+
+.error-message.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contador de caracteres */
+.character-count {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+    margin-top: 2px;
+}
+
+.character-count.warning {
+    color: #ffa500;
+}
+
+.character-count.error {
+    color: #ff4444;
+    font-weight: bold;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-right: 10px;
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #8b0000, #ff4500);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff4500, #8b0000);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Mensaje de éxito */
+.success-message {
+    display: none;
+    background: linear-gradient(45deg, #1a5c1a, #2e8b57);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid #32cd32;
+    font-size: 18px;
+    font-weight: bold;
+    animation: spooky-appear 0.5s ease-out;
+}
+
+.success-message.show {
+    display: block;
+}
+
+@keyframes spooky-appear {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.8) translateY(20px); 
+    }
+    50% { 
+        transform: scale(1.05); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+}
+
+/* Efectos especiales de Halloween */
+.ghost-effect {
+    position: relative;
+}
+
+.ghost-effect::after {
+    content: "👻";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}

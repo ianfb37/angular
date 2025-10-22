@@ -1,0 +1,106 @@
+
+    <link rel="stylesheet" href="formulario.css">
+<div class="containermaster">
+    <div class="container">
+        <h1>Invitación Fiesta Temática</h1>
+        <p class="subtitle">¡Únete a nuestra noche mágica! Completa el formulario para confirmar tu asistencia.</p>
+        
+        <form (ngSubmit)="enviarFormulario()" #form="ngForm">
+            <!-- Nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre <span class="required">*</span></label>
+                <input type="text" id="nombre" name="nombre" 
+                       [(ngModel)]="nombre" 
+                       (blur)="validarCampo('nombre')"
+                       [class]="getFieldClass('nombre')"
+                       required>
+                <div class="error-message" [class.show]="fieldErrors['nombre']">
+                    {{errorMessages['nombre']}}
+                </div>
+                <div class="character-count" [class.warning]="nombre.length < 3" [class.error]="nombre.length === 0">
+                    {{getNombreCount()}}
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" 
+                       [(ngModel)]="email" 
+                       (blur)="validarCampo('email')"
+                       [class]="getFieldClass('email')"
+                       required>
+                <div class="error-message" [class.show]="fieldErrors['email']">
+                    {{errorMessages['email']}}
+                </div>
+            </div>
+            
+            <!-- Tipo de Invitado -->
+            <div class="form-group">
+                <label for="tipoInvitado">Tipo de Invitado <span class="required">*</span></label>
+                <select id="tipoInvitado" name="tipoInvitado" 
+                        [(ngModel)]="tipoInvitado" 
+                        (blur)="validarCampo('tipoInvitado')"
+                        [class]="getFieldClass('tipoInvitado')"
+                        required>
+                    <option value="" disabled selected>Selecciona tu tipo</option>
+                    <option value="Humano">Humano</option>
+                    <option value="Fantasma">Fantasma</option>
+                    <option value="Vampiro">Vampiro</option>
+                    <option value="Bruja">Bruja</option>
+                </select>
+                <div class="error-message" [class.show]="fieldErrors['tipoInvitado']">
+                    {{errorMessages['tipoInvitado']}}
+                </div>
+            </div>
+            
+            <!-- Disfraz -->
+            <div class="form-group">
+                <label for="disfraz">Disfraz <span class="required">*</span></label>
+                <textarea id="disfraz" name="disfraz" rows="3" 
+                          [(ngModel)]="disfraz" 
+                          (blur)="validarCampo('disfraz')"
+                          [class]="getFieldClass('disfraz')"
+                          placeholder="Describe tu disfraz..."
+                          required></textarea>
+                <div class="error-message" [class.show]="fieldErrors['disfraz']">
+                    {{errorMessages['disfraz']}}
+                </div>
+                <div class="character-count" [class.warning]="disfraz.length < 5" [class.error]="disfraz.length === 0">
+                    {{getDisfrazCount()}}
+                </div>
+            </div>
+            
+            <!-- Fecha de Llegada -->
+            <div class="form-group">
+                <label for="fechaLlegada">Fecha de Llegada <span class="required">*</span></label>
+                <input type="date" id="fechaLlegada" name="fechaLlegada" 
+                       [(ngModel)]="fechaLlegada" 
+                       (blur)="validarCampo('fechaLlegada')"
+                       [class]="getFieldClass('fechaLlegada')"
+                       required>
+                <div class="error-message" [class.show]="fieldErrors['fechaLlegada']">
+                    {{errorMessages['fechaLlegada']}}
+                </div>
+            </div>
+            
+            <!-- Reglas -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="aceptaReglas" name="aceptaReglas" 
+                       [(ngModel)]="aceptaReglas" 
+                       (change)="validarCampo('aceptaReglas')"
+                       [class]="getFieldClass('aceptaReglas')">
+                <label for="aceptaReglas">Prometo no morder a los demás invitados</label>
+            </div>
+            <div class="error-message" [class.show]="fieldErrors['aceptaReglas']">
+                {{errorMessages['aceptaReglas']}}
+            </div>
+            
+            <button type="submit">Enviar Invitación</button>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            <!-- Mensaje se llena dinámicamente -->
+        </div>
+    </div>
+</div>

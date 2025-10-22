@@ -1,29 +1,263 @@
-.example-spacer {
-  flex: 1 1 auto;
+/* navbar.css */
+
+/* ===== ESTILOS NORMALES ===== */
+.normal-toolbar {
+  background: #3f51b5 !important; /* Color primario de Angular Material */
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
-mat-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-mat-toolbar-row {
+
+.app-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white !important;
   display: flex;
   align-items: center;
+  gap: 8px;
 }
-a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
+
+/* Botones normales */
+.normal-btn {
+  color: white !important;
+  border-radius: 4px !important;
+  margin: 0 4px !important;
+  transition: all 0.3s ease !important;
 }
-a:hover {
-  text-decoration: underline;
+
+.normal-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
 }
-button {
-  color: white;
+
+.normal-btn mat-icon {
+  color: white !important;
 }
-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+
+/* Botón menú móvil normal */
+.normal-menu-btn {
+  color: white !important;
 }
-button:focus {
-  outline: none;
+
+/* Menú desplegable normal */
+.normal-menu {
+  background: white !important;
+  color: rgba(0, 0, 0, 0.87) !important;
 }
+
+.normal-menu-item {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.normal-menu-item:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.normal-menu-item mat-icon {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+/* Botón de alternancia */
+.mode-toggle-btn {
+  color: white !important;
+  margin-right: 10px !important;
+}
+
+.mode-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== ESTILOS HALLOWEEN ===== */
+.halloween-toolbar {
+  background: linear-gradient(135deg, #9c31ce 0%, #5a189a 50%, #af4c25 100%) !important;
+  border-bottom: 3px solid #ff6d00;
+  position: relative;
+  overflow: hidden;
+}
+
+.halloween-toolbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #ff6d00 25%, 
+    #ff9e00 50%, 
+    #ff6d00 75%, 
+    transparent 100%);
+  animation: spookyGlow 3s ease-in-out infinite;
+}
+
+/* Título con calabaza */
+.halloween-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #ff9e00 !important;
+  text-shadow: 2px 2px 4px rgba(230, 20, 20, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Creepster', cursive, sans-serif;
+}
+
+.pumpkin-icon {
+  color: #ff6d00 !important;
+  filter: drop-shadow(0 0 8px #ff6d00);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Botones Halloween */
+.halloween-btn {
+  color: #ff9e00 !important;
+  border: 1px solid #ff6d00 !important;
+  border-radius: 25px !important;
+  margin: 0 4px !important;
+  transition: all 0.3s ease !important;
+  background: rgba(90, 24, 154, 0.3) !important;
+}
+
+.halloween-btn:hover {
+  background: #ff6d00 !important;
+  color: #2c0b3b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 109, 0, 0.4);
+}
+
+.halloween-btn mat-icon {
+  color: #ff9e00 !important;
+}
+
+.halloween-btn:hover mat-icon {
+  color: #2c0b3b !important;
+}
+
+/* Botón menú móvil */
+.ghost-btn {
+  color: #ff9e00 !important;
+  background: rgba(255, 109, 0, 0.2) !important;
+  border: 1px solid #ff6d00 !important;
+}
+
+.ghost-btn:hover {
+  background: #ff6d00 !important;
+  color: #2c0b3b !important;
+  transform: scale(1.1);
+}
+
+/* Menú desplegable Halloween */
+.halloween-menu {
+  background: linear-gradient(135deg, #2c0b3b 0%, #5a189a 100%) !important;
+  border: 2px solid #ff6d00 !important;
+  border-radius: 15px !important;
+}
+
+.halloween-menu-item {
+  color: #ff9e00 !important;
+  border-bottom: 1px solid rgba(255, 109, 0, 0.3) !important;
+}
+
+.halloween-menu-item:hover {
+  background: #ff6d00 !important;
+  color: #2c0b3b !important;
+}
+
+.halloween-menu-item mat-icon {
+  color: #ff9e00 !important;
+}
+
+.halloween-menu-item:hover mat-icon {
+  color: #2c0b3b !important;
+}
+
+/* Decoraciones */
+.halloween-decoration {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.bat, .spider {
+  color: #ff9e00 !important;
+  animation: fly 4s ease-in-out infinite;
+  font-size: 1.2rem;
+}
+
+.spider {
+  animation-delay: 1s;
+}
+
+/* Enlace activo */
+.active-link {
+  background: #ff6d00 !important;
+  color: #2c0b3b !important;
+  box-shadow: 0 0 20px rgba(255, 109, 0, 0.7) !important;
+}
+
+.active-link mat-icon {
+  color: #2c0b3b !important;
+}
+
+/* Espaciador */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Menú desktop - visible por defecto */
+.desktop-menu {
+  display: flex;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+/* Menú móvil - oculto por defecto */
+.mobile-menu {
+  display: none;
+}
+
+/* Animaciones */
+@keyframes spookyGlow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fly {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(-10deg); }
+  75% { transform: translateY(5px) rotate(10deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+  
+  .halloween-decoration {
+    display: none;
+  }
+  
+  .app-title, .halloween-title {
+    font-size: 1.2rem;
+  }
+  
+  .mode-toggle-btn span {
+    display: none;
+  }
+}
+
+/* Fuente spooky (opcional - necesitarías importar la fuente) */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
