@@ -10,10 +10,10 @@ import { Carrera } from "./carrera/carrera";
 import { Animacion } from './animacion/animacion';
 import { Formulario } from './formulario/formulario';
 import { ThemeService } from './theme.service';
-
+import { CdkDragDropConnectedSortingExample  } from './kanban/kanban';
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, Contador, JuegoTopo, ToolbarOverviewExample, Carrera, Animacion, Formulario],
+  imports: [CommonModule, RouterOutlet, Contador, JuegoTopo, ToolbarOverviewExample, Carrera, Animacion, Formulario, CdkDragDropConnectedSortingExample ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -1,0 +1,79 @@
+<div class="kanban-container">
+  <h1>Tablero Kanban</h1>
+  
+  <div class="columns-container">
+    <div class="example-container">
+      <h2>To do</h2>
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @for (task of todo; track task.id) {
+          <div class="example-box" cdkDrag>
+            <div class="task-header" (click)="toggleTaskDescription(task.id)">
+              <h3 class="task-title">{{ task.title }}</h3>
+              <mat-icon class="expand-icon">
+                {{ task.showDescription ? 'expand_less' : 'expand_more' }}
+              </mat-icon>
+            </div>
+            <div *ngIf="task.showDescription" class="task-description">
+              <p>{{ task.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Doing</h2>
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="d"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @for (task of done; track task.id) {
+          <div class="example-box" cdkDrag>
+            <div class="task-header" (click)="toggleTaskDescription(task.id)">
+              <h3 class="task-title">{{ task.title }}</h3>
+              <mat-icon class="expand-icon">
+                {{ task.showDescription ? 'expand_less' : 'expand_more' }}
+              </mat-icon>
+            </div>
+            <div *ngIf="task.showDescription" class="task-description">
+              <p>{{ task.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="example-container">
+      <h2>Done</h2>
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        @for (task of done; track task.id) {
+          <div class="example-box" cdkDrag>
+            <div class="task-header" (click)="toggleTaskDescription(task.id)">
+              <h3 class="task-title">{{ task.title }}</h3>
+              <mat-icon class="expand-icon">
+                {{ task.showDescription ? 'expand_less' : 'expand_more' }}
+              </mat-icon>
+            </div>
+            <div *ngIf="task.showDescription" class="task-description">
+              <p>{{ task.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

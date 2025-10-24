@@ -33,6 +33,11 @@
       <mat-icon>content_paste</mat-icon>
       {{ isHalloweenMode() ? 'Poción Mágica' : 'Formulario' }}
     </a>
+    <a mat-button routerLink="/kanban" routerLinkActive="active-link" aria-label="Kanban" 
+       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
+      <mat-icon>view_kanban</mat-icon>
+      {{ isHalloweenMode() ? 'Tablero Embrujado' : 'Kanban' }}
+    </a>
   </nav>
 
   <span class="spacer"></span>
@@ -76,6 +81,11 @@
               [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
         <mat-icon>content_paste</mat-icon>
         <span>{{ isHalloweenMode() ? 'Fiesta de Halloween' : 'Formulario' }}</span>
+      </button>
+      <button mat-menu-item routerLink="/kanban" aria-label="Kanban" 
+              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
+        <mat-icon>view_kanban</mat-icon>
+        <span>{{ isHalloweenMode() ? 'Tablero Embrujado' : 'Kanban' }}</span>
       </button>
     </mat-menu>
   </div>
