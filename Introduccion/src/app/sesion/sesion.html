@@ -1,0 +1,42 @@
+<!-- sesion.html -->
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div>
+    <input 
+      type="email" 
+      name="email" 
+      [(ngModel)]="usuario.email"
+      #email="ngModel"
+      required
+      email
+      placeholder="Email">
+    
+    <div *ngIf="email.invalid && email.touched" style="color: red;">
+      <div *ngIf="email.errors?.['required']">Email es requerido</div>
+      <div *ngIf="email.errors?.['email']">Formato de email inválido</div>
+    </div>
+  </div>
+
+  <div>
+    <input 
+      type="password" 
+      name="password" 
+      [(ngModel)]="usuario.password"
+      #password="ngModel"
+      required
+      minlength="6"
+      placeholder="Contraseña">
+    
+    <div *ngIf="password.invalid && password.touched" style="color: red;">
+      <div *ngIf="password.errors?.['required']">Contraseña es requerida</div>
+      <div *ngIf="password.errors?.['minlength']">
+        Mínimo 6 caracteres
+      </div>
+    </div>
+  </div>
+  
+  <button 
+    type="submit" 
+    [disabled]="loginForm.invalid">
+    Iniciar Sesión
+  </button>
+</form>

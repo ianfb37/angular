@@ -1,27 +1,44 @@
-// navbar.ts
-import { Component, inject, ViewChild } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
-import { MatMenuModule, MatMenu } from '@angular/material/menu'; // Cambiar a MatMenu
-import { NgClass } from '@angular/common';
-import { ThemeService } from '../theme.service';
+// src/app/navbar/navbar.ts
+import { Component, OnInit } from '@angular/core';
+import { ThemeService, Theme } from '../theme.service';
 
 @Component({
-  selector: 'toolbar',
-  templateUrl: 'navbar.html',
-  styleUrl: 'navbar.css',
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, NgClass],
+  selector: 'app-navbar',
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.css']
 })
-export class ToolbarOverviewExample {
-  private themeService = inject(ThemeService);
-  isHalloweenMode = this.themeService.halloweenMode;
+export class NavbarComponent implements OnInit {
+  currentTheme: Theme = 'normal';
 
-  // Cambiar a MatMenu en lugar de MatMenuTrigger
-  @ViewChild('mobileAppMenu') mobileAppMenu!: MatMenu;
+  constructor(private themeService: ThemeService) {}
 
-  toggleHalloweenMode() {
-    this.themeService.toggleHalloweenMode();
+  ngOnInit() {
+    this.themeService.currentTheme$.subscribe(theme => {
+      this.currentTheme = theme;
+    });
+  }
+
+  onHalloweenToggle(event: any) {
+    if (event.target.checked) {
+      this.themeService.setTheme('halloween');
+    } else if (this.currentTheme === 'halloween') {
+      this.themeService.setTheme('normal');
+    }
+  }
+
+  onNavidadToggle(event: any) {
+    if (event.target.checked) {
+      this.themeService.setTheme('navidad');
+    } else if (this.currentTheme === 'navidad') {
+      this.themeService.setTheme('normal');
+    }
+  }
+
+  isHalloweenActive(): boolean {
+    return this.currentTheme === 'halloween';
+  }
+
+  isNavidadActive(): boolean {
+    return this.currentTheme === 'navidad';
   }
 }

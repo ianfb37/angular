@@ -1,98 +1,30 @@
-<!-- navbar.html -->
-<mat-toolbar class="normal-toolbar" [class.halloween-toolbar]="isHalloweenMode()" role="navigation">
-  <!-- Logo/Título -->
-  <span class="app-title" [class.halloween-title]="isHalloweenMode()">
-    <mat-icon class="pumpkin-icon" *ngIf="isHalloweenMode()">local_florist</mat-icon>
-    {{ isHalloweenMode() ? 'Spooky App' : 'Mi App' }}
-  </span>
+<!-- src/app/navbar/navbar.html -->
+<nav [class]="currentTheme + '-nav'">
+  <div class="nav-brand">
+    <h2>Mi App Juegos</h2>
+  </div>
   
-  <!-- Menú para desktop -->
-  <nav class="desktop-menu">
-    <a mat-button routerLink="/" routerLinkActive="active-link" aria-label="Inicio" 
-       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
-      <mat-icon>home</mat-icon>
-      {{ isHalloweenMode() ? 'Casa Encantada' : 'Inicio' }}
-    </a>
-    <a mat-button routerLink="/juego-topo" routerLinkActive="active-link" aria-label="Juego Topo" 
-       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
-      <mat-icon>pets</mat-icon>
-      {{ isHalloweenMode() ? 'Caza Fantasmas' : 'Juego' }}
-    </a>
-    <a mat-button routerLink="/carrera" routerLinkActive="active-link" aria-label="Carrera" 
-       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
-      <mat-icon>directions_run</mat-icon>
-      {{ isHalloweenMode() ? 'Carrera de Calabazas' : 'Carrera' }}
-    </a>
-    <a mat-button routerLink="/animacion" routerLinkActive="active-link" aria-label="Animacion" 
-       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
-      <mat-icon>auto_awesome</mat-icon>
-      {{ isHalloweenMode() ? 'Hechizos' : 'Animación' }}
-    </a>
-    <a mat-button routerLink="/formulario" routerLinkActive="active-link" aria-label="Formulario" 
-       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
-      <mat-icon>content_paste</mat-icon>
-      {{ isHalloweenMode() ? 'Poción Mágica' : 'Formulario' }}
-    </a>
-    <a mat-button routerLink="/kanban" routerLinkActive="active-link" aria-label="Kanban" 
-       [class.halloween-btn]="isHalloweenMode()" [class.normal-btn]="!isHalloweenMode()">
-      <mat-icon>view_kanban</mat-icon>
-      {{ isHalloweenMode() ? 'Tablero Embrujado' : 'Kanban' }}
-    </a>
-  </nav>
+  <div class="nav-controls">
+    <div class="theme-toggle">
+      <span class="toggle-label">🎃 Halloween</span>
+      <label class="slide-toggle">
+        <input 
+          type="checkbox" 
+          [checked]="isHalloweenActive()"
+          (change)="onHalloweenToggle($event)">
+        <span class="slider halloween-slider"></span>
+      </label>
+    </div>
 
-  <span class="spacer"></span>
-
-  <!-- Botón Modo Halloween -->
-  <button mat-button (click)="toggleHalloweenMode()" class="mode-toggle-btn">
-    <mat-icon>{{ isHalloweenMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
-    {{ isHalloweenMode() ? 'Modo Normal' : 'Modo Halloween' }}
-  </button>
-
-  <!-- Menú móvil -->
-  <div class="mobile-menu">
-    <button mat-icon-button [matMenuTriggerFor]="mobileAppMenu" aria-label="Menú de navegación" 
-            [class.ghost-btn]="isHalloweenMode()" [class.normal-menu-btn]="!isHalloweenMode()">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <!-- Menú desplegable móvil -->
-    <mat-menu #mobileAppMenu="matMenu" [class.halloween-menu]="isHalloweenMode()" [class.normal-menu]="!isHalloweenMode()">
-      <button mat-menu-item routerLink="/" aria-label="Inicio" 
-              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
-        <mat-icon>home</mat-icon>
-        <span>{{ isHalloweenMode() ? 'Casa Encantada' : 'Inicio' }}</span>
-      </button>
-      <button mat-menu-item routerLink="/juego-topo" aria-label="Juego Topo" 
-              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
-        <mat-icon>pets</mat-icon>
-        <span>{{ isHalloweenMode() ? 'Caza Fantasmas' : 'Juego' }}</span>
-      </button>
-      <button mat-menu-item routerLink="/carrera" aria-label="Carrera" 
-              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
-        <mat-icon>directions_run</mat-icon>
-        <span>{{ isHalloweenMode() ? 'Carrera de Calabazas' : 'Carrera' }}</span>
-      </button>
-      <button mat-menu-item routerLink="/animacion" aria-label="Animacion" 
-              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
-        <mat-icon>auto_awesome</mat-icon>
-        <span>{{ isHalloweenMode() ? 'Hechizos' : 'Animación' }}</span>
-      </button>
-      <button mat-menu-item routerLink="/formulario" aria-label="Formulario" 
-              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
-        <mat-icon>content_paste</mat-icon>
-        <span>{{ isHalloweenMode() ? 'Fiesta de Halloween' : 'Formulario' }}</span>
-      </button>
-      <button mat-menu-item routerLink="/kanban" aria-label="Kanban" 
-              [class.halloween-menu-item]="isHalloweenMode()" [class.normal-menu-item]="!isHalloweenMode()">
-        <mat-icon>view_kanban</mat-icon>
-        <span>{{ isHalloweenMode() ? 'Tablero Embrujado' : 'Kanban' }}</span>
-      </button>
-    </mat-menu>
+    <div class="theme-toggle">
+      <span class="toggle-label">🎄 Navidad</span>
+      <label class="slide-toggle">
+        <input 
+          type="checkbox" 
+          [checked]="isNavidadActive()"
+          (change)="onNavidadToggle($event)">
+        <span class="slider navidad-slider"></span>
+      </label>
+    </div>
   </div>
-
-  <!-- Decoración Halloween -->
-  <div class="halloween-decoration" *ngIf="isHalloweenMode()">
-    <mat-icon class="bat">flutter_dash</mat-icon>
-    <mat-icon class="spider">bug_report</mat-icon>
-  </div>
-</mat-toolbar>
+</nav>

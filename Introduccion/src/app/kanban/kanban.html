@@ -1,18 +1,33 @@
 <div class="kanban-container">
   <h1>Tablero Kanban</h1>
   
+  <div class="add-task-container">
+    <button class="add-task-btn" (click)="openAddTaskDialog()">
+      <mat-icon>add</mat-icon>
+      Añadir Tarea
+    </button>
+  </div>
+  
   <div class="columns-container">
     <div class="example-container">
-      <h2>To do</h2>
+      <div class="column-header">
+        <h2>To do</h2>
+        <span class="task-counter">{{ todo.length }} tareas</span>
+      </div>
       <div
         cdkDropList
         #todoList="cdkDropList"
         [cdkDropListData]="todo"
-        [cdkDropListConnectedTo]="[doneList]"
+        [cdkDropListConnectedTo]="[doingList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
         @for (task of todo; track task.id) {
           <div class="example-box" cdkDrag>
+            <div class="task-actions">
+              <button class="delete-btn" (click)="deleteTask(task.id, 'todo')" mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
             <div class="task-header" (click)="toggleTaskDescription(task.id)">
               <h3 class="task-title">{{ task.title }}</h3>
               <mat-icon class="expand-icon">
@@ -28,16 +43,24 @@
     </div>
 
     <div class="example-container">
-      <h2>Doing</h2>
+      <div class="column-header">
+        <h2>Doing</h2>
+        <span class="task-counter">{{ doing.length }} tareas</span>
+      </div>
       <div
         cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="d"
-        [cdkDropListConnectedTo]="[todoList]"
+        #doingList="cdkDropList"
+        [cdkDropListData]="doing"
+        [cdkDropListConnectedTo]="[todoList, doneList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-        @for (task of done; track task.id) {
+        @for (task of doing; track task.id) {
           <div class="example-box" cdkDrag>
+            <div class="task-actions">
+              <button class="delete-btn" (click)="deleteTask(task.id, 'doing')" mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
             <div class="task-header" (click)="toggleTaskDescription(task.id)">
               <h3 class="task-title">{{ task.title }}</h3>
               <mat-icon class="expand-icon">
@@ -51,17 +74,26 @@
         }
       </div>
     </div>
+
     <div class="example-container">
-      <h2>Done</h2>
+      <div class="column-header">
+        <h2>Done</h2>
+        <span class="task-counter">{{ done.length }} tareas</span>
+      </div>
       <div
         cdkDropList
         #doneList="cdkDropList"
         [cdkDropListData]="done"
-        [cdkDropListConnectedTo]="[todoList]"
+        [cdkDropListConnectedTo]="[doingList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
         @for (task of done; track task.id) {
           <div class="example-box" cdkDrag>
+            <div class="task-actions">
+              <button class="delete-btn" (click)="deleteTask(task.id, 'done')" mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
             <div class="task-header" (click)="toggleTaskDescription(task.id)">
               <h3 class="task-title">{{ task.title }}</h3>
               <mat-icon class="expand-icon">

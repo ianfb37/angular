@@ -1,6 +1,11 @@
-<!-- app.html -->
-<div [class.halloween-theme]="isHalloweenMode()">
-  <h1>Menu</h1>
-  <toolbar></toolbar>
-  <router-outlet></router-outlet>
+<div [class]="currentTheme + '-mode'">
+  <app-navbar></app-navbar>
+  
+  <main class="main-content">
+    <app-contador></app-contador>
+    <app-formulario></app-formulario>
+    <app-juego-topo></app-juego-topo>
+    <app-carrera></app-carrera>
+    <app-animacion></app-animacion>
+  </main>
 </div>
