@@ -1,30 +1,127 @@
-<!-- src/app/navbar/navbar.html -->
-<nav [class]="currentTheme + '-nav'">
-  <div class="nav-brand">
-    <h2>Mi App Juegos</h2>
-  </div>
+<mat-toolbar [class.halloween-toolbar]="isHalloweenMode" [class.normal-toolbar]="!isHalloweenMode" role="navigation">
+  <!-- Logo/Título -->
+  <span class="app-title">
+    <mat-icon [class.pumpkin-icon]="isHalloweenMode">local_florist</mat-icon>
+    {{ isHalloweenMode ? 'Spooky App' : 'My App' }}
+  </span>
   
-  <div class="nav-controls">
-    <div class="theme-toggle">
-      <span class="toggle-label">🎃 Halloween</span>
-      <label class="slide-toggle">
-        <input 
-          type="checkbox" 
-          [checked]="isHalloweenActive()"
-          (change)="onHalloweenToggle($event)">
-        <span class="slider halloween-slider"></span>
-      </label>
-    </div>
+  <!-- Menú para desktop -->
+  <nav class="desktop-menu">
+    <a mat-button routerLink="" routerLinkActive="active-link" 
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>home</mat-icon>
+      {{ isHalloweenMode ? 'Casa Encantada' : 'Inicio' }}
+    </a>
+    <a mat-button routerLink="juego-topo" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>{{ isHalloweenMode ? 'pets' : 'sports_esports' }}</mat-icon>
+      {{ isHalloweenMode ? 'Caza Fantasmas' : 'Juego Topo' }}
+    </a>
+    <a mat-button routerLink="carrera" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>directions_run</mat-icon>
+      {{ isHalloweenMode ? 'Carrera Calabazas' : 'Carrera' }}
+    </a>
+    <a mat-button routerLink="animacion" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>{{ isHalloweenMode ? 'auto_awesome' : 'animation' }}</mat-icon>
+      {{ isHalloweenMode ? 'Hechizos' : 'Animación' }}
+    </a>
+    <a mat-button routerLink="formulario" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>description</mat-icon>
+      {{ isHalloweenMode ? 'Poción Mágica' : 'Formulario' }}
+    </a>
+    <a mat-button routerLink="contador" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>calculate</mat-icon>
+      {{ isHalloweenMode ? 'Contador Espeluznante' : 'Contador' }}
+    </a>
+    <a mat-button routerLink="kanban" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>view_kanban</mat-icon>
+      {{ isHalloweenMode ? 'Tablero Embrujado' : 'Kanban' }}
+    </a>
+    <a mat-button routerLink="sesion" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>login</mat-icon>
+      {{ isHalloweenMode ? 'Iniciar Sesión Fantasmal' : 'Sesión' }}
+    </a>
+  </nav>
 
-    <div class="theme-toggle">
-      <span class="toggle-label">🎄 Navidad</span>
-      <label class="slide-toggle">
-        <input 
-          type="checkbox" 
-          [checked]="isNavidadActive()"
-          (change)="onNavidadToggle($event)">
-        <span class="slider navidad-slider"></span>
-      </label>
-    </div>
+  <span class="spacer"></span>
+
+  <!-- Botón Modo Halloween -->
+  <button mat-raised-button 
+          [class.halloween-toggle-btn]="isHalloweenMode"
+          [class.normal-toggle-btn]="!isHalloweenMode"
+          (click)="toggleHalloweenMode()"
+          aria-label="Toggle Halloween Mode"
+          class="theme-toggle-btn">
+    <mat-icon>{{ isHalloweenMode ? 'nightlight' : 'light_mode' }}</mat-icon>
+    {{ isHalloweenMode ? 'Modo Normal' : 'Modo Halloween' }}
+  </button>
+
+  <!-- Menú móvil -->
+  <div class="mobile-menu">
+    <button mat-icon-button [matMenuTriggerFor]="mobileAppMenu"
+            [class.ghost-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #mobileAppMenu="matMenu" [class.halloween-menu]="isHalloweenMode">
+      <button mat-menu-item routerLink="" 
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>home</mat-icon>
+        <span>{{ isHalloweenMode ? 'Casa Encantada' : 'Inicio' }}</span>
+      </button>
+      <button mat-menu-item routerLink="juego-topo"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>{{ isHalloweenMode ? 'pets' : 'sports_esports' }}</mat-icon>
+        <span>{{ isHalloweenMode ? 'Caza Fantasmas' : 'Juego Topo' }}</span>
+      </button>
+      <button mat-menu-item routerLink="carrera"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>directions_run</mat-icon>
+        <span>{{ isHalloweenMode ? 'Carrera Calabazas' : 'Carrera' }}</span>
+      </button>
+      <button mat-menu-item routerLink="animacion"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>{{ isHalloweenMode ? 'auto_awesome' : 'animation' }}</mat-icon>
+        <span>{{ isHalloweenMode ? 'Hechizos' : 'Animación' }}</span>
+      </button>
+      <button mat-menu-item routerLink="formulario"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>description</mat-icon>
+        <span>{{ isHalloweenMode ? 'Poción Mágica' : 'Formulario' }}</span>
+      </button>
+      <button mat-menu-item routerLink="contador"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>calculate</mat-icon>
+        <span>{{ isHalloweenMode ? 'Contador Espeluznante' : 'Contador' }}</span>
+      </button>
+      <button mat-menu-item routerLink="kanban"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>view_kanban</mat-icon>
+        <span>{{ isHalloweenMode ? 'Tablero Embrujado' : 'Kanban' }}</span>
+      </button>
+      <button mat-menu-item routerLink="sesion"
+              [class.halloween-menu-item]="isHalloweenMode">
+        <mat-icon>login</mat-icon>
+        <span>{{ isHalloweenMode ? 'Iniciar Sesión Fantasmal' : 'Sesión' }}</span>
+      </button>
+      
+      <!-- Separador y toggle en menú móvil -->
+      <button mat-menu-item (click)="toggleHalloweenMode()">
+        <mat-icon>{{ isHalloweenMode ? 'light_mode' : 'nightlight' }}</mat-icon>
+        <span>{{ isHalloweenMode ? 'Modo Normal' : 'Modo Halloween' }}</span>
+      </button>
+    </mat-menu>
   </div>
-</nav>
+
+  <!-- Decoración Halloween (solo en modo Halloween) -->
+  <div class="halloween-decoration" *ngIf="isHalloweenMode">
+    <mat-icon class="bat">flutter_dash</mat-icon>
+    <mat-icon class="spider">bug_report</mat-icon>
+  </div>
+</mat-toolbar>

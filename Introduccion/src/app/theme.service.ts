@@ -2,38 +2,28 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export type Theme = 'normal' | 'halloween' | 'navidad';
-
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private currentTheme = new BehaviorSubject<Theme>('normal');
-  public currentTheme$ = this.currentTheme.asObservable();
+  private halloweenMode = new BehaviorSubject<boolean>(false);
+  public halloweenMode$ = this.halloweenMode.asObservable();
 
-  setTheme(theme: Theme) {
-    this.currentTheme.next(theme);
-    localStorage.setItem('appTheme', theme);
+  toggleHalloweenMode() {
+    const newMode = !this.halloweenMode.value;
+    this.halloweenMode.next(newMode);
+    localStorage.setItem('halloweenMode', JSON.stringify(newMode));
   }
 
-  toggleHalloween() {
-    const newTheme = this.currentTheme.value === 'halloween' ? 'normal' : 'halloween';
-    this.setTheme(newTheme);
-  }
-
-  toggleNavidad() {
-    const newTheme = this.currentTheme.value === 'navidad' ? 'normal' : 'navidad';
-    this.setTheme(newTheme);
+  setHalloweenMode(enabled: boolean) {
+    this.halloweenMode.next(enabled);
+    localStorage.setItem('halloweenMode', JSON.stringify(enabled));
   }
 
   loadInitialTheme() {
-    const savedTheme = localStorage.getItem('appTheme') as Theme;
-    if (savedTheme) {
-      this.currentTheme.next(savedTheme);
+    const savedMode = localStorage.getItem('halloweenMode');
+    if (savedMode) {
+      this.halloweenMode.next(JSON.parse(savedMode));
     }
-  }
-
-  getCurrentTheme(): Theme {
-    return this.currentTheme.value;
   }
 }

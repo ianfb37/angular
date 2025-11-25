@@ -1,74 +1,6 @@
-/* navbar.css */
-
-/* ===== ESTILOS NORMALES ===== */
-.normal-toolbar {
-  background: #3f51b5 !important; /* Color primario de Angular Material */
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.app-title {
-  font-weight: bold;
-  font-size: 1.4rem;
-  color: white !important;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Botones normales */
-.normal-btn {
-  color: white !important;
-  border-radius: 4px !important;
-  margin: 0 4px !important;
-  transition: all 0.3s ease !important;
-}
-
-.normal-btn:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.normal-btn mat-icon {
-  color: white !important;
-}
-
-/* Botón menú móvil normal */
-.normal-menu-btn {
-  color: white !important;
-}
-
-/* Menú desplegable normal */
-.normal-menu {
-  background: white !important;
-  color: rgba(0, 0, 0, 0.87) !important;
-}
-
-.normal-menu-item {
-  color: rgba(0, 0, 0, 0.87) !important;
-}
-
-.normal-menu-item:hover {
-  background: rgba(0, 0, 0, 0.04) !important;
-}
-
-.normal-menu-item mat-icon {
-  color: rgba(0, 0, 0, 0.54) !important;
-}
-
-/* Botón de alternancia */
-.mode-toggle-btn {
-  color: white !important;
-  margin-right: 10px !important;
-}
-
-.mode-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* ===== ESTILOS HALLOWEEN ===== */
+/* Tema Halloween */
 .halloween-toolbar {
-  background: linear-gradient(135deg, #9c31ce 0%, #5a189a 50%, #af4c25 100%) !important;
+  background: linear-gradient(135deg, #2c0b3b 0%, #5a189a 50%, #240046 100%) !important;
   border-bottom: 3px solid #ff6d00;
   position: relative;
   overflow: hidden;
@@ -91,11 +23,11 @@
 }
 
 /* Título con calabaza */
-.halloween-title {
+.app-title {
   font-weight: bold;
   font-size: 1.4rem;
   color: #ff9e00 !important;
-  text-shadow: 2px 2px 4px rgba(230, 20, 20, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -250,12 +182,8 @@
     display: none;
   }
   
-  .app-title, .halloween-title {
+  .app-title {
     font-size: 1.2rem;
-  }
-  
-  .mode-toggle-btn span {
-    display: none;
   }
 }
 

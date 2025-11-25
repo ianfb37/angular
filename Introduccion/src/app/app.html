@@ -1,11 +1,5 @@
-<div [class]="currentTheme + '-mode'">
+<div [class.halloween-mode]="isHalloweenMode">
   <app-navbar></app-navbar>
-  
-  <main class="main-content">
-    <app-contador></app-contador>
-    <app-formulario></app-formulario>
-    <app-juego-topo></app-juego-topo>
-    <app-carrera></app-carrera>
-    <app-animacion></app-animacion>
-  </main>
+  <router-outlet></router-outlet>
+
 </div>
