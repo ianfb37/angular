@@ -12,9 +12,10 @@ import { Formulario } from './formulario/formulario';
 import { CdkDragDropConnectedSortingExample  } from './kanban/kanban';
 import { Sesion } from './sesion/sesion';
 import { NavbarComponent } from "./navbar/navbar";
+import { ClickerComponent } from './clicker/clicker';
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, Contador, JuegoTopo, Carrera, Animacion, Formulario, CdkDragDropConnectedSortingExample, Sesion, NavbarComponent],
+  imports: [CommonModule, RouterOutlet, Contador, JuegoTopo, Carrera, Animacion, Formulario, CdkDragDropConnectedSortingExample, Sesion, NavbarComponent, ClickerComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -6,7 +6,8 @@ import { Formulario } from './formulario/formulario';
 import { CdkDragDropConnectedSortingExample  } from './kanban/kanban';
 import { Sesion } from './sesion/sesion';
 import { Contador } from './contador/contador/contador';
+import { ClickerComponent } from './clicker/clicker';
 export const routes: Routes = [
       { path: 'juego-topo', component: JuegoTopo },{ path: 'carrera', component: Carrera },{ path: 'animacion', component: Animacion },{path:'formulario', component:Formulario},
-      {path:'kanban', component:CdkDragDropConnectedSortingExample},{path:'sesion', component:Sesion},{path:'contador', component:Contador}
+      {path:'kanban', component:CdkDragDropConnectedSortingExample},{path:'sesion', component:Sesion},{path:'contador', component:Contador},{path:'clicker', component:ClickerComponent}
 ];

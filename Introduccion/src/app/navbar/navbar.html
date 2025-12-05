@@ -47,6 +47,11 @@
       <mat-icon>login</mat-icon>
       {{ isHalloweenMode ? 'Iniciar Sesión Fantasmal' : 'Sesión' }}
     </a>
+    <a mat-button routerLink="clicker" routerLinkActive="active-link"
+       [class.halloween-btn]="isHalloweenMode" [class.normal-btn]="!isHalloweenMode">
+      <mat-icon>monetization_on</mat-icon>
+      {{ isHalloweenMode ? 'Clickeador de Monedas' : 'Clicker' }}
+    </a>
   </nav>
 
   <span class="spacer"></span>

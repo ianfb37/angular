@@ -1,0 +1,41 @@
+<div [ngClass]="mejoraTemporalActive ? 'fondo-temporal main-bg' : 'fondo-normal main-bg'">
+  <div class="center-block">
+    <h1>Monedas: {{ formatNumber(monedas) }}</h1>
+    <div class="counts">
+      <span>Por segundo: {{ formatNumber(monedasPorSegundo) }}</span>
+      <span>Total generadas: {{ formatNumber(monedasTotales) }}</span>
+    </div>
+    <div class="cookie-container">
+      <img src="https://supercookieclicker.netlify.app/cookie.png" (click)="coinClick()" class="cookie-img" alt="Galleta">
+      <img *ngIf="temporalVisible" src="https://supercookieclicker.netlify.app/cookie.png" (click)="activateTemporal()"
+        class="temporal-img"
+        [style.top.px]="temporalTop"
+        [style.left.px]="temporalLeft"
+        alt="Mejora temporal"/>
+    </div>
+  </div>
+
+  <h2>Mejoras de producción</h2>
+  <div class="cards-section">
+    <div class="card" *ngFor="let m of mejorasProd; let i = index">
+      <strong>{{ m.nombre }}</strong>
+      <span>Producción: <span style="color:#79601e;">{{ formatNumber(m.baseProduccion) }}/s</span></span>
+      <span>Compradas: <b>{{ m.cantidad }}</b></span>
+      <span>Precio: <span style="color:#a7651e;font-weight:bold;">{{ formatNumber(getPrecioProd(i)) }}</span></span>
+      <button (click)="buyProd(i)">Comprar</button>
+    </div>
+  </div>
+
+  <h2>Mejoras de click</h2>
+  <div class="cards-section">
+    <div class="card" *ngFor="let m of mejorasClick; let i = index">
+      <strong>{{ m.nombre }}</strong>
+      <span>Extra por click: <span style="color:#23527c;">{{ formatNumber(m.incrementoClick) }}</span></span>
+      <span>Compradas: <b>{{ m.cantidad }}</b></span>
+      <span>Precio: <span style="color:#23527c;font-weight:bold;">{{ formatNumber(getPrecioClick(i)) }}</span></span>
+      <button (click)="buyClick(i)">Comprar</button>
+    </div>
+  </div>
+
+  <button (click)="reiniciar()" class="reiniciar-btn">Reiniciar</button>
+</div>
