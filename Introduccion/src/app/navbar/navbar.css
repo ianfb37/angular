@@ -1,11 +1,20 @@
-/* Tema Halloween */
+/* Tema Halloween - versión adaptativa con filas múltiples para el nav */
+
+/* Contenedor principal: permitir wrap y altura automática */
 .halloween-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
   background: linear-gradient(135deg, #2c0b3b 0%, #5a189a 50%, #240046 100%) !important;
   border-bottom: 3px solid #ff6d00;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* permitir que los elementos envueltos se muestren */
+  flex-wrap: wrap; /* <-- permite que el nav pase a 2 o 3 filas */
+  height: auto;
 }
 
+/* Línea decorativa superior */
 .halloween-toolbar::before {
   content: "";
   position: absolute;
@@ -32,24 +41,32 @@
   align-items: center;
   gap: 8px;
   font-family: 'Creepster', cursive, sans-serif;
+  flex: 0 0 auto; /* evitar que el título se comprima demasiado */
 }
 
+/* Icono calabaza */
 .pumpkin-icon {
   color: #ff6d00 !important;
   filter: drop-shadow(0 0 8px #ff6d00);
   animation: float 3s ease-in-out infinite;
 }
 
-/* Botones Halloween */
+/* Botones Halloween (items de nav) */
+/* Se permite que los botones crezcan/encojen y tengan un ancho base para controlar filas */
 .halloween-btn {
   color: #ff9e00 !important;
   border: 1px solid #ff6d00 !important;
   border-radius: 25px !important;
-  margin: 0 4px !important;
+  margin: 4px !important;
   transition: all 0.3s ease !important;
   background: rgba(90, 24, 154, 0.3) !important;
+  padding: 6px 12px !important;
+  flex: 0 1 auto; /* permitir que envuelvan */
+  min-width: 110px; /* ajustar para controlar cuántas columnas entran */
+  text-align: center;
 }
 
+/* Hover */
 .halloween-btn:hover {
   background: #ff6d00 !important;
   color: #2c0b3b !important;
@@ -137,16 +154,19 @@
 /* Espaciador */
 .spacer {
   flex: 1 1 auto;
+  min-width: 8px;
 }
 
-/* Menú desktop - visible por defecto */
+/* Menú desktop - visible por defecto, ahora permite wrap */
 .desktop-menu {
   display: flex;
   gap: 8px;
   margin-left: 16px;
+  align-items: center;
+  flex-wrap: wrap; /* <-- clave: los items pueden pasar a la siguiente fila */
 }
 
-/* Menú móvil - oculto por defecto */
+/* Menú móvil - oculto por defecto (mostrarse sólo en pantallas muy pequeñas) */
 .mobile-menu {
   display: none;
 }
@@ -168,22 +188,49 @@
   75% { transform: translateY(5px) rotate(10deg); }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .desktop-menu {
+/* Responsive: control fino de cuántas columnas/filas aparecen.
+   - >= 1200px: items se mantienen en una fila si caben.
+   - <= 1200px: intentamos 2 columnas (cada botón ~45% ancho).
+   - <= 920px: intentamos 3 columnas (cada botón ~30% ancho).
+   - <= 480px: pasamos al menú móvil (ocultamos desktop-menu para ahorrar espacio).
+*/
+
+/* Dos columnas aproximadas */
+@media (max-width: 1200px) {
+  .desktop-menu .halloween-btn {
+    flex: 1 1 45%; /* dos por fila aproximadamente */
+  }
+}
+
+/* Tres columnas aproximadas */
+@media (max-width: 920px) {
+  .desktop-menu .halloween-btn {
+    flex: 1 1 30%; /* tres por fila aproximadamente */
+    min-width: 100px;
+  }
+
+  .app-title {
+    font-size: 1.25rem;
+  }
+
+  /* ocultar decoraciones para ahorrar espacio */
+  .halloween-decoration {
     display: none;
+  }
+}
+
+/* Pantallas muy pequeñas: cambiar a menú móvil */
+@media (max-width: 480px) {
+  .desktop-menu {
+    display: none; /* ya no usamos items en filas; mostramos el menú móvil */
   }
   
   .mobile-menu {
     display: block;
   }
   
-  .halloween-decoration {
-    display: none;
-  }
-  
   .app-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 

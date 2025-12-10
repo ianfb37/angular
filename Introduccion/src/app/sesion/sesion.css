@@ -1,82 +1,116 @@
-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #aa1010;
+/* sesion.css (mejorado y responsivo) */
 
+/* Wrapper: centra el formulario y provee fondo neutro para evitar
+   el efecto "todo rojo" al abrir la página */
+.login-wrapper{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f6f8; /* fondo suave, menos agresivo */
+  padding: 24px;
+  box-sizing: border-box;
 }
-form{
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 300px;
+
+/* Form card */
+.login-form{
+  background-color: #ffffff;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(10,10,10,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  border-left: 6px solid #aa1010; /* acento de color (tu rojo) */
 }
-input{
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+
+/* Título */
+.form-title{
+  margin: 0;
+  text-align: center;
+  color: #222;
+  font-size: 20px;
+  font-weight: 600;
 }
-button{
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+
+/* Campos */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-button:hover{
-    background-color: #218838;
+
+input[type="email"],
+input[type="password"]{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color .12s ease, box-shadow .12s ease;
 }
-h2{
-    text-align: center;
-    margin-bottom: 20px;
+
+/* Asegura que los inputs sea legibles y no demasiado pequeños */
+input::placeholder {
+  color: #9aa0a6;
 }
-label{
-    font-weight: bold;
+
+/* Focus visible */
+input:focus{
+  outline: none;
+  border-color: #aa1010;
+  box-shadow: 0 0 0 6px rgba(170,16,16,0.06);
 }
-a{
-    text-decoration: none;
-    color: #007bff;
-    font-size: 14px;
-    text-align: center;
+
+/* Mensajes de error */
+.error-text {
+  color: #d32f2f;
+  font-size: 13px;
+  line-height: 1.2;
 }
-a:hover{
-    text-decoration: underline;
+
+/* Botón principal */
+.btn-primary{
+  padding: 12px;
+  background-color: #aa1010;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .12s ease, transform .06s ease;
 }
-p{
-    text-align: center;
-    font-size: 14px;
-    color: #555;
+
+.btn-primary:hover:not([disabled]){
+  background-color: #981010;
+  transform: translateY(-1px);
 }
-.error-message{
-    color: red;
-    font-size: 14px;
-    text-align: center;
+
+/* Estado disabled */
+button[disabled]{
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
-.success-message{
-    color: green;
-    font-size: 14px;
-    text-align: center;
+div{
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 12px;
 }
-.loading{
-    text-align: center;
-    font-size: 14px;
-    color: #555;
+div a{
+  color: #aa1010;
+  text-decoration: none;
+  font-weight: 500;
 }
-@media (max-width: 400px) {
-    form {
-        width: 90%;
-        padding: 15px;
-    }
-}
-mat-toolbar{
-    background-color: #aa1010;
-    color: white;
-}
+div a:hover{
+  text-decoration: underline;
+}  
+
+
